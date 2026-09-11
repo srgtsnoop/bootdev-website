@@ -87,44 +87,6 @@ def generate_pages_recursive(
             )
 
 
-generate_pages_recursive(
-    "content",
-    "template.html",
-    "public",
-    "/",
-)
-
-
-def generate_pages_recursive(
-    dir_path_content,
-    template_path,
-    dest_dir_path,
-    basepath,
-):
-    for entry in os.listdir(dir_path_content):
-        source_path = os.path.join(dir_path_content, entry)
-        dest_path = os.path.join(dest_dir_path, entry)
-
-        if os.path.isfile(source_path):
-            if entry.endswith(".md"):
-                dest_path = os.path.splitext(dest_path)[0] + ".html"
-
-                generate_page(
-                    source_path,
-                    template_path,
-                    dest_path,
-                    basepath,
-                )
-
-        else:
-            generate_pages_recursive(
-                source_path,
-                template_path,
-                dest_path,
-                basepath,
-            )
-
-
 def main():
     basepath = "/"
 
